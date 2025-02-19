@@ -1,0 +1,112 @@
+[
+    {
+        "id": "A",
+        "exterior": {
+            "us_um": 0.7,
+            "uc": 0.5,
+            "ut_umd": 0.8,
+            "uh": 2.7,
+            "up": 5.7,
+            "uph": 1.8,
+            "upv": 1.4,
+            "uphv": 1.25
+        },
+        "interior": {
+            "TPH": 1.8,
+            "TPV": 1.4,
+            "TPHV": 1.25
+        }
+    },
+    {
+        "id": "B",
+        "exterior": {
+            "us_um": 0.56,
+            "uc": 0.44,
+            "ut_umd": 0.75,
+            "uh": 2.3,
+            "up": 5.7,
+            "uph": 1.55,
+            "upv": 1.2,
+            "uphv": 1.1
+        },
+        "interior": {
+            "TPH": 1.55,
+            "TPV": 1.2,
+            "TPHV": 1.1
+        }
+    },
+    {
+        "id": "C",
+        "exterior": {
+            "us_um": 0.49,
+            "uc": 0.4,
+            "ut_umd": 0.7,
+            "uh": 2.1,
+            "up": 5.7,
+            "uph": 1.35,
+            "upv": 1.2,
+            "uphv": 0.95
+        },
+        "interior": {
+            "TPH": 1.35,
+            "TPV": 1.2,
+            "TPHV": 0.95
+        }
+    },
+    {
+        "id": "D",
+        "exterior": {
+            "us_um": 0.41,
+            "uc": 0.35,
+            "ut_umd": 0.65,
+            "uh": 1.8,
+            "up": 5.7,
+            "uph": 1.2,
+            "upv": 1.2,
+            "uphv": 0.85
+        },
+        "interior": {
+            "TPH": 1.2,
+            "TPV": 1.2,
+            "TPHV": 0.85
+        }
+    },
+    {
+        "id": "E",
+        "exterior": {
+            "us_um": 0.37,
+            "uc": 0.33,
+            "ut_umd": 0.59,
+            "uh": 1.8,
+            "up": 5.7,
+            "uph": 1,
+            "upv": 1,
+            "uphv": 0.7
+        },
+        "interior": {
+            "TPH": 1,
+            "TPV": 1,
+            "TPHV": 0.7
+        } 
+    },
+    {
+        "id": "F",
+        "exterior": {
+            "us_um": 0.8,
+            "uc": 0.55,
+            "ut_umd": 0.9,
+            "uh": 3.2,
+            "up": 5.7,
+            "uph": 1.9,
+            "upv": 1.4,
+            "uphv": 1.35
+        },
+        "interior": {
+            "TPH": 1.9,
+            "TPV": 1.4,
+            "TPHV": 1.35
+        }
+    }  
+
+]
+  

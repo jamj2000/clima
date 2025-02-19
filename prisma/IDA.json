@@ -1,0 +1,66 @@
+{
+    "IDA": {
+        "residencial": [
+            {
+                "habitaciones": 0,
+                "locales_secos": {
+                    "dormi_princi": 8,
+                    "restos_dormi": 0,
+                    "sala_estar_comedor": 6
+                },
+                "locales_humedos": {
+                    "min_total": 12,
+                    "min_local": 6
+                }
+            },
+            {
+                "habitaciones": 1,
+                "locales_secos": {
+                    "dormi_princi": 8,
+                    "restos_dormi": 0,
+                    "sala_estar_comedor": 6
+                },
+                "locales_humedos": {
+                    "min_total": 12,
+                    "min_local": 6
+                }
+            },
+            {
+                "habitaciones": 2,
+                "locales_secos": {
+                    "dormi_princi": 8,
+                    "restos_dormi": 4,
+                    "sala_estar_comedor": 8
+                },
+                "locales_humedos": {
+                    "min_total": 24,
+                    "min_local": 7
+                }
+            },
+            {
+                "habitaciones": 3,
+                "locales_secos": {
+                    "dormi_princi": 8,
+                    "restos_dormi": 4,
+                    "sala_estar_comedor": 10
+                },
+                "locales_humedos": {
+                    "min_total": 33,
+                    "mis_local": 8
+                }
+            }
+        ],
+        "permanente": {
+            "ida1": 20,
+            "ida2": 12.5,
+            "ida3": 8,
+            "ida4": 5
+        },
+        "no_permanente": {
+            "ida1": 0,
+            "ida2": 0.83,
+            "ida3": 0.55,
+            "ida4": 0.28
+        }
+    }
+}

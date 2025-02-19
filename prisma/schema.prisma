@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default(cuid())
+  name          String
+  email         String?    @unique
+  password      String?
+  emailVerified DateTime?
+  image         String?
+  role          String?    @default("USER") // o  ADMIN
+  accounts      Account[]
+  proyectos     Proyecto[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+
+  @@unique([provider, providerAccountId])
+}
+
+model Proyecto {
+  id                    Int       @id @default(autoincrement())
+  nombre                String
+  fecha                 DateTime?
+  temp_ext_ver          Float?
+  temp_ext_inv          Float?
+  hum_ext_ver           Float?
+  hum_ext_inv           Float?
+  temp_terreno_ver      Float?
+  temp_terreno_inv      Float?
+  altitud               Float?
+  zona_climatica        String?
+  oda                   String?
+  us_um                 Float?
+  uc                    Float?
+  ut_umd                Float?
+  uh                    Float?
+  up                    Float?
+  uph                   Float?
+  upv                   Float?
+  uphv                  Float?
+  tph                   Float?
+  tpv                   Float?
+  tphv                  Float?
+  numero_personas       Int?
+  w_persona             Float?
+  carga_latente         Float?
+  ocupacion_personas    String?
+  caudales_ida          Float?
+  caudales_aire         Float?
+  tipo_lampara          String?
+  potencia_lampara      Float?
+  valor_seguridad       Float?
+  factorFuncionamiento  Float?
+  comentarios           String?
+  imagen                String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  // Calculos ext no visibles:
+  temp_int_ver          Float?
+  temp_int_inv          Float?
+  hum_int_ver           Float?
+  hum_int_inv           Float?
+  presion               Float?
+  p_sat_agua_ext_ver    Float?
+  hum_absol_ext_ver     Float?
+  entalpia_ext_ver_sens Float?
+  entalpia_ext_ver_lat  Float?
+  volum_espe_ext_ver    Float?
+  p_sat_agua_ext_inv    Float?
+  hum_absol_ext_inv     Float?
+  entalpia_ext_inv_sens Float?
+  entalpia_ext_inv_lat  Float?
+  volum_espe_ext_inv    Float?
+  // Calculos int no visibles
+  p_sat_agua_int_ver    Float?
+  hum_absol_int_ver     Float?
+  entalpia_int_ver_sens Float?
+  entalpia_int_ver_lat  Float?
+  volum_espe_int_ver    Float?
+  p_sat_agua_int_inv    Float?
+  hum_absol_int_inv     Float?
+  entalpia_int_inv_sens Float?
+  entalpia_int_inv_lat  Float?
+  volum_espe_int_inv    Float?
+  localidad             Localidad @relation(fields: [localidadId], references: [id])
+  localidadId           Int
+  user                  User?     @relation(fields: [userId], references: [id])
+  userId                String?
+  recintos              Recinto[]
+  equipos               Equipo[]
+
+  // @@index([userId], name: "user_id_index")
+}
+
+model Equipo {
+  id                    Int       @id @default(autoincrement())
+  nombre                String?
+  potencia              Float?
+  factor_funcionamiento Float?
+  proyecto              Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+  proyectoId            Int?
+}
+
+model Recinto {
+  id                     Int       @id @default(autoincrement())
+  nombre                 String?
+  // Valores relativos al recinto
+  temp_ver_relativa      Float?
+  temp_inv_relativa      Float?
+  hum_ver_relativa       Float?
+  hum_inv_relativa       Float?
+  longitud               Float?
+  anchura                Float?
+  altura                 Float?
+  volumen                Float?
+  ida                    String?
+  //Valores de cerramiento 1
+  orientacion_c_1        String?
+  ubicacion_c_1          String?
+  color_c_1              String?
+  temperatura_ver_c_1    Float?
+  temperatura_inv_c_1    Float?
+  superficie_c_1         Float?
+  superficie_vidrio_c_1  Float?
+  tipo_vidrio_c_1        String?
+  superficie_puertas_c_1 Float?
+  //Valores de cerramiento 2
+  orientacion_c_2          String?
+  ubicacion_c_2          String?
+  color_c_2              String?
+  temperatura_ver_c_2    Float?
+  temperatura_inv_c_2    Float?
+  superficie_c_2         Float?
+  superficie_vidrio_c_2  Float?
+  tipo_vidrio_c_2        String?
+  superficie_puertas_c_2 Float?
+  //Valores de cerramiento 3
+  orientacion_c_3          String?
+  ubicacion_c_3          String?
+  color_c_3              String?
+  temperatura_ver_c_3    Float?
+  temperatura_inv_c_3    Float?
+  superficie_c_3         Float?
+  superficie_vidrio_c_3  Float?
+  tipo_vidrio_c_3        String?
+  superficie_puertas_c_3 Float?
+  //Valores de cerramiento 4
+  orientacion_c_4          String?
+  ubicacion_c_4          String?
+  color_c_4              String?
+  temperatura_ver_c_4    Float?
+  temperatura_inv_c_4    Float?
+  superficie_c_4         Float?
+  superficie_vidrio_c_4  Float?
+  tipo_vidrio_c_4        String?
+  superficie_puertas_c_4 Float?
+  //Valores suelo
+  ubicacion_suelo        String?
+  temperatura_ver_suelo  Float?
+  temperatura_inv_suelo  Float?
+  superficie_suelo       Float?
+  //Valores de techo
+  orientacion_techo      String?
+  ubicacion_techo        String?
+  temperatura_ver_techo  Float?
+  temperatura_inv_techo  Float?
+  superficie_techo       Float?
+  tipo_vidrio_techo      String?
+  proyecto               Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+  proyectoId             Int?
+}
+
+model Localidad {
+  id             Int        @id @default(autoincrement())
+  nombre         String
+  temp_ext_ver   Float
+  hum_ext_ver    Float
+  temp_ext_inv   Float
+  hum_ext_inv    Float
+  altitud        Float
+  zona_climatica Zona       @relation(fields: [zonaId], references: [id])
+  zonaId         String
+  proyectos      Proyecto[]
+}
+
+model Zona {
+  id          String      @id
+  exterior    Json
+  interior    Json
+  localidades Localidad[]
+}
