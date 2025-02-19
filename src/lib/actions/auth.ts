@@ -10,7 +10,9 @@ declare global {
 
 // REGISTER
 export async function register(formData: FormData) {
-  const { name, email, password } = Object.fromEntries (formData.entries())
+  // const { name, email, password } = Object.fromEntries (formData.entries())
+  const email = formData.get('email')
+  const password = formData.get('password')
 
   // Comprobamos si el usuario ya está registrado
   const user = await prisma.user.findUnique({   where: { email }   })
@@ -38,7 +40,9 @@ export async function register(formData: FormData) {
 
 // LOGIN credentials
 export async function login(formData: FormData) {
-  const { email, password } = Object.fromEntries (formData.entries())
+  // const { email, password } = Object.fromEntries (formData.entries())
+  const email = formData.get('email')
+  const password = formData.get('password')
 
   // Comprobamos si el usuario está registrado
   const user = await prisma.user.findUnique({   where: { email }   })
